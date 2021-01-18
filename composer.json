@@ -1,0 +1,19 @@
+{
+    "name": "salabun/entity-versioning",
+    "description": "This package takes control with entity versions.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vlad Salabun",
+            "email": "vlad@salabun.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Salabun\\": "src/"
+        }
+    },
+    "require": {}
+}
