@@ -141,10 +141,7 @@ Trait DataController
 	{
         // Дізнаюсь якою буде наступна версія сутності:
         $maxVersion = $this->versioningTypes[$this->versioningType]; 
-        die($maxVersion);
-        
-        
-        
+
         // TODO: врахуй тип! TINYINT
         $this->entityVersions[$property] = $version;
 	}

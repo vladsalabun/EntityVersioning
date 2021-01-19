@@ -1,5 +1,5 @@
 # EntityVersioning
-Ця програма дозволя зливати різні версії сутностей.
+Ця програма дозволяє зливати різні версії сутностей у єдине ціле.
 # Встановлення:
 ```sh
 composer require salabun/entity-versioning
@@ -56,3 +56,21 @@ $entity->getEntity();
 ```sh
 $entity->getEntityWithVersions();
 ```
+    
+# Корисні методи:   
+Встановити постфікс для версій сутності:
+```sh
+$entity->setEntityPostfix('_version');
+```
+Отримати інформація про усі здійснені зміни:
+```sh
+$entity->getStoredPropertyChanges();
+```
+Отримати лише нові властивості:
+```sh
+$entity->getNewProperties();
+```
+# Контакти:
+Влад Салабун  
+vlad@salabun.com  
+[https://salabun.com](https://salabun.com)
