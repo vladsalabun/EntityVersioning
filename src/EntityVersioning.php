@@ -66,7 +66,10 @@ class EntityVersioning
         foreach($this->getComparativeProperties() as $comparativeProperty) {
             
             // Якщо властивості немає, але дані є, тоді встановлюю версію 1:
-            if (!in_array($comparativeProperty, $properties) and key_exists($comparativeProperty, $this->getIncomingProperties())) {
+            if (
+                !in_array($comparativeProperty, $properties) and 
+                key_exists($comparativeProperty, $this->getIncomingProperties())
+            ) {
                 
                 // Додаю її, та встановлюю версію:
                 $this->addIncomingPropertiesVersions([

@@ -16,7 +16,7 @@ Trait DataController
         'INT'       => 4294967295,  // 4 байти
     ];
 
-    private $versioningType = 'TINYINT';
+    private $versioningType = 'INT';
     
     /** 
      *  Кількість змін у сутності:
@@ -118,13 +118,6 @@ Trait DataController
         ];
 	}
     
-    /** 
-     *  Повертає список змінених властивостей:
-     */
-	public function getStoredPropertyChanges()
-	{
-        return $this->chengedProperties;
-	}
 
     /** 
      *  Змінюю збережену властивість:
@@ -142,12 +135,18 @@ Trait DataController
         // Дізнаюсь якою буде наступна версія сутності:
         $maxVersion = $this->versioningTypes[$this->versioningType]; 
 
-        // TODO: врахуй тип! TINYINT
         $this->entityVersions[$property] = $version;
 	}
     
     /** 
-     *  Повертає частковий результат роботи - лише нові версії властивостей сутності:
+     *  Повертає перелік змінених властивостей сутності з її минулими значеннями та версіями:
+     */
+	public function getStoredPropertyChanges()
+	{
+        return $this->chengedProperties;
+	}
+    /** 
+     *  Повертає усі змінені властивості злитої сутності:
      */
     public function getNewProperties()
     {
@@ -161,15 +160,7 @@ Trait DataController
     }
     
     /** 
-     *  Повертає повний результат роботи - усі властивості сутності:
-     */
-    public function getEntity()
-    {
-        return $this->entity;
-    }
-    
-    /** 
-     *  Повертає повний результат роботі - усі нові версії сутності:
+     *  Повертає версії усіх властивостей злитої сутності:
      */
     public function getEntityVersions()
     {
@@ -177,9 +168,42 @@ Trait DataController
     }
     
     /** 
-     *  Повертає повний результат роботи з версіями включно:
+     *  Повертає усі змінені версії сутності:
+     */
+    public function getNewVersions()
+    {
+        $newProperties = $this->getNewProperties();
+        
+        foreach($newProperties as $property => $value) {
+             $array[$property] = $this->getEntityVersions()[$property];
+        }
+        
+        return $array;
+    }
+    
+    /** 
+     *  Повертає лише злиту сутність:
+     */
+    public function getEntity()
+    {
+        return $this->entity;
+    }
+
+    /** 
+     *  Повертає злиту сутність включно з новими версіями її властивостей:
      */
     public function getEntityWithVersions()
+    {
+        $array = $this->entity;
+        $array['versions'] = $this->entityVersions ;
+        
+        return $array;
+    }
+    
+    /** 
+     *  Повертає злиту сутність включно з новими версіями її властивостей в одновимірному масиві:
+     */
+    public function getEntityWithFlatVersions()
     {
         $array = $this->entity;
 
@@ -191,4 +215,7 @@ Trait DataController
         
         return $array;
     }
+    
+
+    
 }
