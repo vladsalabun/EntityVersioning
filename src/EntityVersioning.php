@@ -50,9 +50,6 @@ class EntityVersioning
             }
         }
 
-        // Знищую усі дані:
-        $this->clearData();
-
     }
         
     /** 
@@ -60,7 +57,7 @@ class EntityVersioning
      *  Якщо версії не вказано, то буде встановлена версія 1.
      */
     private function checkIncomingVersions() 
-	{
+    {
         $properties = array_keys($this->getIncomingPropertiesVersions()); 
 
         foreach($this->getComparativeProperties() as $comparativeProperty) {
@@ -79,13 +76,6 @@ class EntityVersioning
             }
             
         }
-	}
-    
-    /** 
-     *  Знищую усі дані:
-     */
-    private function clearData() 
-	{
-        
-	}
+    }
+
 }
