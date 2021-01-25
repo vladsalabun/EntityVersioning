@@ -56,6 +56,11 @@ $entity->getEntity();
 ```sh
 $entity->getEntityWithVersions();
 ```
+Отримай нові версії сутності:
+```sh
+$entity->getEntityVersions();
+```
+
 У злитій сутності версії будуть такими, які вказав фронтенд.
  
 # Корисні методи:   
@@ -71,6 +76,16 @@ $entity->getStoredPropertyChanges();
 ```sh
 $entity->getNewProperties();
 ```
+Отримати лише нові версії:
+```sh
+$entity->getNewVersions();
+```
+Отримати перелік властивостей, які мають версії:
+```sh
+$entity->getComparativeProperties();
+```
+
+
 # Важливо для фронтенда:   
 При будь-якій зміні сутності, її версію слід збільшувати на +1 лише один раз, доки не відбудеться синхронізація із сервером.
 
