@@ -64,26 +64,25 @@ $entity->getEntityVersions();
 У злитій сутності версії будуть такими, які вказав фронтенд.
  
 # Корисні методи:   
-Встановити постфікс для версій сутності:
-```sh
-$entity->setEntityPostfix('_version');
-```
-Отримати інформація про усі здійснені зміни:
-```sh
-$entity->getStoredPropertyChanges();
-```
-Отримати лише нові властивості:
-```sh
-$entity->getNewProperties();
-```
-Отримати лише нові версії:
-```sh
-$entity->getNewVersions();
-```
+
 Отримати перелік властивостей, які мають версії:
 ```sh
 $entity->getComparativeProperties();
 ```
+
+Отримати інформацію про усі здійснені зміни:
+```sh
+$entity->getStoredPropertyChanges();
+```
+Отримати лише нові властивості для оновлення у БД:
+```sh
+$entity->getNewProperties();
+```
+Отримати лише нові версії для оновлення у БД:
+```sh
+$entity->getNewVersions();
+```
+
 
 
 # Важливо для фронтенда:   
