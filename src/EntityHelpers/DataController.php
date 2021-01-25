@@ -172,6 +172,8 @@ Trait DataController
      */
     public function getNewVersions()
     {
+        $array = [];
+        
         $newProperties = $this->getNewProperties();
         
         foreach($newProperties as $property => $value) {
