@@ -68,34 +68,34 @@ Trait DataController
     /** 
      *  Додати одну властивість, по якій буде проходити порівняння:
      */
-	public function addComparativeProperty($string)
-	{
+    public function addComparativeProperty($string)
+    {
         if(is_string($string)) {
             $this->comparativeProperties[] = $string;
         }
         
         return $this;
-	}
+    }
     
     /** 
      *  Додати властивості, по яких буде проходити порівняння:
      */
-	public function addComparativeProperties($array)
-	{
+    public function addComparativeProperties($array)
+    {
         if(is_array($array)) {
             $this->comparativeProperties = array_merge($this->comparativeProperties, $array);
         }
         
         return $this;
-	}
+    }
     
     /** 
      *  Повертає властивості, по яких буде проходити порівняння:
      */
-	public function getComparativeProperties()
-	{
+    public function getComparativeProperties()
+    {
         return $this->comparativeProperties;
-	}
+    }
     
     /** 
      *  Встановити постфікс версії сутності:
@@ -108,43 +108,43 @@ Trait DataController
     /** 
      *  Зберігаю зміну властивості:
      */
-	private function saveStoredPropertyChanges($array)
-	{
+    private function saveStoredPropertyChanges($array)
+    {
         $this->chengedProperties[$array['property']] = [
             'old_value' => $array['old_value'],
             'new_value' => $array['new_value'],
             'old_version' => $array['old_version'],
             'new_version' => $array['new_version'],
         ];
-	}
+    }
     
 
     /** 
      *  Змінюю збережену властивість:
      */
-	private function changeEntityProperty($property, $value)
-	{
+    private function changeEntityProperty($property, $value)
+    {
         $this->entity[$property] = $value;     
-	}
+    }
     
     /** 
      *  Змінюю версію збереженої властивості:
      */
-	private function changeEntityPropertyVersion($property, $version)
-	{
+    private function changeEntityPropertyVersion($property, $version)
+    {
         // Дізнаюсь якою буде наступна версія сутності:
         $maxVersion = $this->versioningTypes[$this->versioningType]; 
 
         $this->entityVersions[$property] = $version;
-	}
+    }
     
     /** 
      *  Повертає перелік змінених властивостей сутності з її минулими значеннями та версіями:
      */
-	public function getStoredPropertyChanges()
-	{
+    public function getStoredPropertyChanges()
+    {
         return $this->chengedProperties;
-	}
+    }
     /** 
      *  Повертає усі змінені властивості злитої сутності:
      */
